@@ -1,0 +1,11 @@
+<div *ngIf="shoppingItem">
+  <h2>{{shoppingItem.name | uppercase }} Details</h2>
+  <img src="./assets/{{shoppingItem.img}}.jpg" alt="image">
+  <div><span>Name: </span>{{shoppingItem.name}}</div>
+  <div><span>Price: </span>{{shoppingItem.price| currency:'USD':true}}</div>
+  <div><span>Rating: </span>{{shoppingItem.evaluate}}</div>
+  <div><span>Description: </span>{{shoppingItem.discription}}</div>
+  <button (click)="goBack()">go back</button>
+</div>
+
+

@@ -1,0 +1,71 @@
+<!--<div class="grid grid-pad">
+  <p><a [routerLink]="['/login']">Logout</a></p>
+  <a *ngFor="let ShoppingItem of items" class="col-1-4" routerLink="/detail/{{ShoppingItem.name}}">
+    <div class="module item">
+      <h4>{{ShoppingItem.name}}</h4>
+    </div>
+  </a>
+</div>-->
+<div class="row">
+  <div class="small-12 columns">
+    <h3>
+      <i class="material-icons">shopping_basket</i>
+      Your Shopping Basket
+    </h3>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="small-12 columns">
+    <h5>
+      Sub Total ({{itemCount}} items):
+      <span class="text--red text--bold js-cart-total">{{(cart | async).grossTotal | currency:'USD':true}}</span>
+    </h5>
+  </div>
+
+  <div class="medium-8 columns">
+  <div class="row checkout_row"
+      *ngFor="let item of cartItems">
+    <div class="medium-2 columns text-center">
+        <img src="./assets/{{item.product.img}}.jpg"
+              class="product_image"/>
+    </div>
+    <div class="medium-5 columns">
+        <span class="text--bold js-product-name">{{item.product.name}}</span>
+        <p class="js-product-desc">{{item.product.description}}</p>
+    </div>
+    <div class="medium-2 columns text-right">
+        <p class="text--red js-product-costs">{{item.quantity}} x {{item.product.price | currency:'USD':true}}</p>
+    </div>
+    <div class="medium-3 columns text-right">
+        <p class="text--bold text--red js-product-total">{{item.totalCost | currency:'USD':true}}</p>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<br/>
+<div class="row">
+  <div class="small-12 columns">
+    <a class="success button large expanded"
+       [attr.disabled]="itemCount === 0 ? true : null"
+       routerLink="/checkout">Proceed To Checkout</a>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns text-center">
+    or
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <button type="button"
+            class="secondary button small expanded js-btn-empty-cart"
+            (click)="emptyCart()"
+            [attr.disabled]="itemCount === 0 ? true : null">
+      Empty shopping basket
+    </button>
+  </div>
+</div>
+

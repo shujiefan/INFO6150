@@ -1,0 +1,95 @@
+<!--<div class="col-lg-4 col-md-6 mb-4">
+  <div class="card h-100">
+    <a href="#"><img class="card-img-top" src="img/food1.png" alt=""></a>
+    <div class="card-body">
+      <h4 class="card-title">
+        <a href="#">Chips</a>
+      </h4>
+      <h5>$5.99</h5>
+      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+    </div>
+  </div>
+</div>
+-->
+<p><a [routerLink]="['/login']">Logout</a></p>
+<a>Sort By:</a>
+<button (click)="sortItemsbyname()">Name</button>
+<button (click)="sortItemsbyprice1()">Price:high to low</button>
+<button (click)="sortItemsbyprice2()">Price:low to high</button>
+<button (click)="sortItemsbyrating()">Rating</button>
+
+<div class="row">
+<div class="small-12 medium-8 columns">
+  <li *ngFor="let ShoppingItem of ShoppingItems">
+  <!--<div class="col-lg-4 col-md-6 mb-4">-->
+  <a routerLink="/detail/{{ShoppingItem.name}}">    
+        <div class="card h-100">
+            <div class="medium-3 columns text-center">
+          <a href="#"><img class="card-img-top" src="./assets/{{ShoppingItem.img}}.jpg" alt=""></a>
+            </div>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">{{ShoppingItem.name}}</a>
+            </h4>
+            <small class="product_price js-product-price">{{ShoppingItem.price| currency:'USD':true}}</small>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">{{ShoppingItem.evaluate}}</small>
+          </div> 
+        </div>
+ </a>
+ <p>
+  <button type="button"
+          class="button success large js-btn-add"
+          (click)="addProductToCart(ShoppingItem, 1)">Add To Cart</button>
+  <button type="button"
+          class="button small js-btn-remove"
+          (click)="removeProductFromCart(ShoppingItem, 1)">Remove item from cart</button>
+</p>
+<!--</div>-->
+</li>
+</div>
+<div class="small-12 medium-4 columns">
+  <app-shopping-cart></app-shopping-cart>
+</div>
+</div>
+
+
+
+<!--<app-item-detail [shoppingItem]="selectedShoppingItem"></app-item-detail>-->
+
+
+<!--<div class="row">
+  <div class="small-12 medium-8 columns">
+    <ul class="product-list">
+      <li *ngFor="let ShoppingItem of ShoppingItems | async"
+          class="product-container">
+          <div class="row">
+            <div class="medium-3 columns text-center">
+              <img src="./assets/{{ShoppingItem.img}}.jpg"
+                   class="product_image"/>
+            </div>
+            <div class="medium-9 columns">
+              <h4>
+                <span class="text--bold js-product-name">{{ShoppingItem.name}}</span>
+                <small class="product_price js-product-price">{{ShoppingItem.price | currency:'GBP':true}}</small>
+              </h4>
+              <p>
+                <button type="button"
+                        class="button success large js-btn-add"
+                        (click)="addProductToCart(product, 1)">Add To Cart</button>
+                <button type="button"
+                        class="button small js-btn-remove"
+                        *ngIf="productInCart(product) | async"
+                        (click)="removeProductFromCart(product, 1)">Remove item from cart</button>
+              </p>
+            </div>
+          </div>
+      </li>
+    </ul>
+  </div>
+  
+</div>-->
